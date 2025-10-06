@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANOVA</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    
+    
+    
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">⚡PLANOVA</div>
+            <ul class="nav-links">
+                <li><a href="#" data-section="home" class="active">Home</a></li>
+                <li><a href="#" data-section="tasks">Tasks</a></li>
+                <li><a href="#" data-section="analytics">Analytics</a></li>
+                <li><a href="#" data-section="about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section active">
+        <div class="container">
+            <div class="hero">
+                <h1 class="section-title">✨PLANOVA- Plan.Prioritize.Perform</h1>
+                <p class="section-subtitle">Where every plan finds its path.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card" data-navigate="tasks">
+                    <div class="stat-number" id="home-total-tasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-card" data-navigate="tasks">
+                    <div class="stat-number" id="home-active-tasks">0</div>
+                    <div class="stat-label">Active Tasks</div>
+                </div>
+                <div class="stat-card" data-navigate="tasks">
+                    <div class="stat-number" id="home-completed-tasks">0</div>
+                    <div class="stat-label">Completed Task</div>
+                </div>
+                <div class="stat-card" data-navigate="analytics">
+                    <div class="stat-number" id="home-completion-rate">0%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Section -->
+            <div style="margin-top: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Get Things Done</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" style="cursor: pointer;" onclick="navigateToSection('tasks')">
+                        <div class="feature-icon">➕</div>
+                        <h4 class="feature-title"> New Task</h4>
+                        <p class="feature-description">Add a new task to your list and stay organized</p>
+                    </div>
+                    <div class="feature-card" style="cursor: pointer;" onclick="navigateToSection('tasks')">
+                        <div class="feature-icon">📝</div>
+                        <h4 class="feature-title">View Tasks</h4>
+                        <p class="feature-description">Manage your active and completed tasks</p>
+                    </div>
+                    <div class="feature-card" style="cursor: pointer;" onclick="navigateToSection('analytics')">
+                        <div class="feature-icon">📈</div>
+                        <h4 class="feature-title">Track Progress</h4>
+                        <p class="feature-description">Visualize your productivity with analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Section -->
+            <div style="margin-top: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Recent Activity</h2>
+                <div id="recent-tasks" class="tasks-list" style="max-width: 800px; margin: 0 auto;">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎯</div>
+                        <p>No recent activity. Start by creating your first task!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productivity Tips -->
+            <div style="margin-top: 4rem; background: var(--bg-card); padding: 3rem; border-radius: 16px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">MINDSET FOR MOMENTUM</h2>
+                <div style="display: grid; gap: 1.5rem;">
+                    <div style="display: flex; gap: 1rem; align-items: start;">
+                        <div style="font-size: 2rem; flex-shrink: 0;">💡</div>
+                        <div>
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">"The secret of getting ahead is getting started."</h4>
+                            <p style="color: var(--text-secondary);">-MARL TWAIN</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: start;">
+                        <div style="font-size: 2rem; flex-shrink: 0;">⏰</div>
+                        <div>
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">"Don’t watch the clock; do what it does. Keep going."</h4>
+                            <p style="color: var(--text-secondary);">-SAM LEVENSON.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: start;">
+                        <div style="font-size: 2rem; flex-shrink: 0;">🎯</div>
+                        <div>
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">"Focus on being productive instead of busy."</h4>
+                            <p style="color: var(--text-secondary);">-TIM FERRISS</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: start;">
+                        <div style="font-size: 2rem; flex-shrink: 0;">✨</div>
+                        <div>
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">"Success is the sum of small efforts, repeated day in and day out."</h4>
+                            <p style="color: var(--text-secondary);">-ROBERT COLLIER.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TASKS SECTION -->
+    <section id="tasks" class="section">
+        <div class="container">
+            <h2 class="section-title">Task Manager</h2>
+            <p class="section-subtitle">Create and manage your tasks efficiently</p>
+            
+            <div class="tasks-container">
+                <!-- Task Input -->
+                <div class="task-input-section">
+                    <h3 style="margin-bottom: 1.5rem;">Add New Task</h3>
+                    <form id="task-form">
+                        <div class="input-group">
+                            <label for="task-title">Task Title *</label>
+                            <input type="text" id="task-title" placeholder="Enter task title" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="task-description">Description (Optional)</label>
+                            <textarea id="task-description" rows="4" placeholder="Enter task description"></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submit-btn">Add Task</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-edit-btn" style="display: none; margin-top: 1rem;">Cancel Edit</button>
+                    </form>
+
+                    <div class="progress-section">
+                        <h4>Overall Progress</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progress-bar">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-list-section">
+                    <!-- Active Tasks -->
+                    <div class="task-category">
+                        <div class="category-header">
+                            <h3 class="category-title">📋 Active Tasks</h3>
+                            <span class="task-count" id="active-count">0</span>
+                        </div>
+                        <div class="tasks-list" id="active-tasks-list">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">📝</div>
+                                <p>No active tasks. Add one to get started!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Tasks -->
+                    <div class="task-category">
+                        <div class="category-header">
+                            <h3 class="category-title">✅ Completed Tasks</h3>
+                            <span class="task-count" id="completed-count">0</span>
+                        </div>
+                        <div class="tasks-list" id="completed-tasks-list">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">🎉</div>
+                                <p>No completed tasks yet. Keep going!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANALYTICS SECTION -->
+    <section id="analytics" class="section">
+        <div class="container">
+            <h2 class="section-title">Analytics Dashboard</h2>
+            <p class="section-subtitle">Visual Intelligence for Every Move You Make</p>
+            
+            <div class="analytics-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">Task Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="donut-chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3 class="chart-title">Completion Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="bar-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Planova</h2>
+                <p class="section-subtitle">Planova is a smart, intuitive task management and productivity platform designed to help individuals and teams organize, plan, and accomplish their goals efficiently.
+The name “PLANOVA” blends “PLAN” + “NOVA” — meaning a new way to plan — symbolizing innovation, clarity, and growth in productivity</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h4 class="feature-title">Efficient And Productive</h4>
+                        <p class="feature-description">Enjoy ultra-smooth performance with optimized animations for a seamless experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4 class="feature-title">Insightful Analytics</h4>
+                        <p class="feature-description">Visualize your productivity trends with interactive charts and progress graphs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h4 class="feature-title">Smart Memory</h4>
+                        <p class="feature-description">Your tasks stay safe during your session — no accidental data loss while you browse.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h4 class="feature-title">Sleek Modern User Interface</h4>
+                        <p class="feature-description">Experience a refined dark interface with elegant neon accents and intuitive design</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h4 class="feature-title">Fully Responsive</h4>
+                        <p class="feature-description">Optimized for all devices — manage your tasks effortlessly on desktop, tablet, or phone.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h4 class="feature-title">Serverless Simplicity</h4>
+                        <p class="feature-description">No backend, no hassle — everything runs directly in your browser for instant performance.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center; color: var(--text-secondary);">
+                    
+                    <p style="margin-top: 0.5rem;">© 2025 PLANOVA. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    
+</body>
+</html>
